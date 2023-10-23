@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>QR Code Attendance Scanner</title>
+<style>
+#video {
+  width: 500px;
+  height: 500px;
+}
+</style>
+</head>
+<body>
+<video id="video"></video>
+<script src="instascan.min.js"></script>
+<script>
+// Request camera permission from the user.
+navigator.mediaDevices.getUserMedia({video: true}).then(function(stream) {
+  // Start the video stream.
+  document.getElementById("video").srcObject = stream;
+
+  // Create a new QR code scanner.
+  var qrCodeScanner = new QRCodeScanner();
+
+  // When the QR code scanner detects a QR code, call the onQRCodeDetected() function.
+  qrCodeScanner.onQRCodeDetected = function(qrCode) {
+    // Get the data from the QR code.
+    var qrCodeData = qrCode.data;
+
+    // Mark the student's attendance.
+    markStudentAttendance(qrCodeData);
+  };
+
+  // Mark the student's attendance.
+  // This function is specific to your attendance management system.
+  function markStudentAttendance(qrCodeData) {
+    // ...
+  }
+
+  // Listen for the user to stop the video stream.
+  document.getElementById("video").addEventListener("stop", function() {
+    // Stop the QR code scanner.
+    qrCodeScanner.stop();
+  });
+});
+</script>
+</body>
+</html>
