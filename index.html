@@ -11,34 +11,23 @@
 </head>
 <body>
 <video id="video"></video>
-<script src="instascan.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
 <script>
-// Wait for the instascan.js library to load before initializing the QR code scanner.
-window.addEventListener("load", function() {
-  // Create a new QR code scanner.
-  var qrCodeScanner = new QRCodeScanner("#video");
+import QRious from "qrious";
 
-  // When the QR code scanner detects a QR code, call the onQRCodeDetected() function.
-  qrCodeScanner.onQRCodeDetected = function(qrCode) {
-    // Get the data from the QR code.
-    var qrCodeData = qrCode.data;
+const qrScanner = new QRious("#video");
 
-    // Mark the student's attendance.
-    markStudentAttendance(qrCodeData);
-  };
+qrScanner.on("qrDetected", function(qrCode) {
+  const qrCodeData = qrCode.data;
 
-  // Mark the student's attendance.
-  // This function is specific to your attendance management system.
-  function markStudentAttendance(qrCodeData) {
-    // ...
-  }
-
-  // Listen for the user to stop the video stream.
-  document.getElementById("video").addEventListener("stop", function() {
-    // Stop the QR code scanner.
-    qrCodeScanner.stop();
-  });
+  markStudentAttendance(qrCodeData);
 });
+
+function markStudentAttendance(qrCodeData) {
+  // ...
+}
+
+qrScanner.start();
 </script>
 </body>
 </html>
