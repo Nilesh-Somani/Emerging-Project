@@ -11,15 +11,12 @@
 </head>
 <body>
 <video id="video"></video>
-<script src="instascan.min.js"></script>
+<script src="instascan.js"></script>
 <script>
-// Request camera permission from the user.
-navigator.mediaDevices.getUserMedia({video: true}).then(function(stream) {
-  // Start the video stream.
-  document.getElementById("video").srcObject = stream;
-
+// Wait for the instascan.js library to load before initializing the QR code scanner.
+window.addEventListener("load", function() {
   // Create a new QR code scanner.
-  var qrCodeScanner = new QRCodeScanner();
+  var qrCodeScanner = new QRCodeScanner("#video");
 
   // When the QR code scanner detects a QR code, call the onQRCodeDetected() function.
   qrCodeScanner.onQRCodeDetected = function(qrCode) {
