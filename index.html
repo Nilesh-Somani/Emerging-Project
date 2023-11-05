@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Attendance</title>
+  <!-- Include Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Additional custom CSS for centering content */
+    .center-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .content-box {
+      background-color: #b3b3b3;
+      padding: 20px;
+      border-radius: 10px;
+      color: #000;
+    }
+
+    .content-box input {
+      width: 100%;
+      height: 50px;
+      border: 1px solid #000;
+      outline: 0;
+      padding: 10px;
+      margin: 10px 0 20px;
+      border-radius: 5px;
+    }
+
+    .content-box button {
+      width: 100%;
+      height: 50px;
+      background: #494eea;
+      color: #fff;
+      border: 0;
+      outline: 0;
+      border-radius: 5px;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      margin: 20px 0;
+      font-weight: 500;
+    }
+
+    #imgBox {
+      width: 200px;
+      border-radius: 5px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 1s;
+    }
+
+    #imgBox img {
+      width: 100%;
+      padding: 10px;
+    }
+
+    #imgBox.show-img {
+      max-height: 300px;
+      margin: 10px auto;
+      border: 1px solid #d1d1d1;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #reader {
+      width: 600px;
+    }
+
+    #result {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    #qr-generator,
+    #student-info,
+    #imgBox {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container center-box">
+    <div class="content-box">
+
+      <div id="qr-scanner">
+        <h1>QR Code Scanner</h1>
+        <main>
+          <div id="reader"></div>
+          <div id="result"></div>
+        </main>
+        <button type="button" class="mark">Mark Attendance</button>
+        <button type="button" class="rescan">Rescan</button>
+      </div>
+
+      <div id="qr-generator">
+        <h1>QR Code Generator</h1>
+        <p>Paste a url or enter text to create QR code</p>
+        <input type="text" placeholder="Enter text or url" id="qrText">
+        <div id="qrcode"></div>
+        <div id="imgBox">
+          <img src="" alt="QR" id="qrImage">
+        </div>
+        <button type="button" onclick="generateQR()">Generate QR Code</button>
+      </div>
+
+      <div id="student-info">
+        <h3>Student :</h3>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Include Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="html5-qrcode.min.js"></script>
+  <script>
+    function generateQR() {
+      let imgBox = document.getElementById("imgBox");
+      let qrImage = document.getElementById("qrImage");
+      let qrText = document.getElementById("qrText");
+      qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrText.value;
+      imgBox.classList.add("show-img");
+      imgBox.style.display = "block";
+    }
+    const scanner = new Html5QrcodeScanner('reader', {
+      qrBox: {
+        width: 250,
+        height: 250,
+      },
+      fps: 20,
+    });
+    scanner.render(success,error);
+    function success(result) {
+      document.getElementById("result").innerHTML = `
+      <h1>Success!</h1>
+      <p><a href=${result}>${result}</a></p>
+      `;
+      scanner.clear();
+      document.getElementById("reader").remove();
+    }
+    function error(err) {
+      console.log(err);
+    }
+  </script>
+
+</body>
+
+</html>
