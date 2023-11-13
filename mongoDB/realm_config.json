@@ -1,0 +1,8 @@
+{
+    "app_id": "qr-code-attendance-etkwb",
+    "config_version": 20210101,
+    "name": "QR-Code-Attendance",
+    "location": "IN-MB",
+    "provider_region": "aws-ap-south-1",
+    "deployment_model": "LOCAL"
+}
