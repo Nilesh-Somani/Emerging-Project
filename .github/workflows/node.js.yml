@@ -26,4 +26,5 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: node app.js
+    - run: npm start
+    - run: open http://localhost:3000
