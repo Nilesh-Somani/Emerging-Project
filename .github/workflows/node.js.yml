@@ -21,7 +21,7 @@ jobs:
         run: npm install
 
       - name: Start server
-        run: npm start
+        run: node app.js
 
       - name: Show server in browser
         run: open http://localhost:3000
