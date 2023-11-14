@@ -1,6 +1,7 @@
-const express = require("express"),
-        
-        app = express();
+import express from "express";
+import open from "open";
+
+const app = express();
 
 app.set("view engine", "ejs");
 
