@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -20,6 +20,3 @@ jobs:
 
       - name: Start server
         run: npm run start
-
-      - name: Show server in browser
-        run: open http://localhost:3000
