@@ -1,8 +1,5 @@
-// modules used
-const { log } = require("console");
 const express = require("express"),
   { MongoClient } = require("mongodb");
-bcrypt = require("bcrypt"),
   client = new MongoClient('mongodb+srv://root:root201123@qrattendance.gzdv2bn.mongodb.net'),
   path = require("path"),
   app = express();
@@ -63,7 +60,6 @@ app.post("/forget", async (req, res) => {
   if (!check) {
     res.send("<h1>User Not Found. Can't Forget Password.</h1><button style='font-size: 22; padding: 5px'><a href='/forget' style='text-decoration: none; color: black;'>Forget Page</a></button>");
   } else if (check) {
-    const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
     if (req.new_password == req.password_configure) {
       const data = {
         name: req.body.username,
