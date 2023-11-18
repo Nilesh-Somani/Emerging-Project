@@ -21,5 +21,5 @@ To run this project:
    ```
 12. Open This in Link in Browser:
     ```link
-       127.0.0.1:3000
+       http://127.0.0.1:3000
     ```
