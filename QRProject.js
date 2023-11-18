@@ -7,13 +7,6 @@ bcrypt = require("bcrypt"),
   path = require("path"),
   app = express();
 
-expressSession = require('express-session');
-sessionOptions = {
-  secret: "QRcode",
-  resave: true,
-  saveUninitialized: true
-};
-
 let user = {
   name: {
     type: String,
@@ -37,7 +30,6 @@ let pageNotFound = "<div style='position: absolute; top: 50%; left: 50%; transfo
 app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
-app.use(expressSession(sessionOptions));
 
 app.set("view engine", "ejs");
 
