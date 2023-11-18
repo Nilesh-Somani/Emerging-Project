@@ -1,0 +1,178 @@
+.navbar {
+    background-color: #494eea;
+    color: #fff;
+    padding: 20px;
+    cursor: pointer;
+  }
+
+  .navbar a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px 10px;
+  }
+
+  .navbar a:hover {
+    background-color: #28334d;
+  }
+
+  .active {
+    background-color: #28334d;
+  }
+
+  .profile-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #ddd;
+    z-index: 1;
+  }
+
+  .profile-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    z-index: 2;
+  }
+
+  .profile-dropdown.show {
+    display: block;
+  }
+
+  .profile-dropdown a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .content-box #qr-scanner a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .content-box #qr-scanner a:hover {
+    text-decoration: none;
+    color: #000;
+  }
+
+  .profile-dropdown a:hover {
+    background-color: #eee;
+  }
+
+  .center-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-top: 20px;
+    z-index: -1;
+  }
+
+  .content-box {
+    background-color: #b3b3b3;
+    padding: 10px;
+    border-radius: 10px;
+    color: #000;
+  }
+
+  .content-box input,
+  .content-box select {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #000;
+    outline: 0;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border-radius: 5px;
+  }
+
+  .content-box button {
+    width: 100%;
+    height: 50px;
+    background: #494eea;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    margin: 20px 0;
+    font-weight: 500;
+  }
+
+  #imgBox {
+    width: 200px;
+    border-radius: 5px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 1s;
+  }
+
+  #imgBox img {
+    width: 100%;
+    padding: 10px;
+  }
+
+  #imgBox.show-img {
+    max-height: 300px;
+    margin: 10px auto;
+    border: 1px solid #d1d1d1;
+  }
+
+  #reader {
+    width: 350px;
+    height: 350px;
+    border: 1px solid #ccc;
+  }
+
+  #result {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  #student-info {
+    position: relative;
+    overflow-x: hidden;
+    min-width: 90vw;
+    min-height: 60vh;
+  }
+
+  .collapse-container {
+    margin-bottom: 20px;
+  }
+  
+  .collapse-header {
+    background-color: #f2f2f2;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .collapse-toggle {
+    display: block;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .collapse.show {
+    background-color: #fff;
+  }
+  
+  .table-striped {
+    position: absolute;
+    top: 20;
+    left: 0;
+    width: 100%;
+    overflow-y: auto;
+  }
+
+  #qr-scanner,
+  #qr-generator,
+  #student-info,
+  #imgBox,
+  #result-contains {
+    display: none;
+  }
