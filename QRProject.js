@@ -76,7 +76,7 @@ app.post("/forget", async (req, res) => {
   }
 })
 
-app.get("/QRCode", async (req, res) => {
+app.get("/qrcode", async (req, res) => {
   if (user.name.value !== null) {
     const student = await client.db("Qrcode").collection("students").find({ subject: user.subject.value, section: user.section.value }).sort({ name: 1 });
     const students = await student.toArray();
